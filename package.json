@@ -1,5 +1,5 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "chatty",
   "version": "1.0.0",
   "description": "Simple and lightweight Boilerplate for ReactJS projects",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noahlotzer/react-simple-boilerplate.git"
+    "url": "https://github.com/lojenny/chatty.git"
   },
   "keywords": [
     "react",
@@ -42,7 +42,7 @@
     "sockjs-client": "^1.1.2",
     "style-loader": "0.13.1",
     "webpack": "2.2.1",
-    "webpack-dev-server": "2.3.0"
+    "webpack-dev-server": "^1.9.0"
   },
   "dependencies": {
     "react": "15.4.2",
