@@ -8,7 +8,7 @@ class MessageList extends React.Component {
             return <Message
                 content={message.content}
                 username={message.username}
-                key={message.id}
+                id={message.id}
             />
         });
         return (
