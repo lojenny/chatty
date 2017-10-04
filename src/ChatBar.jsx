@@ -8,6 +8,7 @@ class ChatBar extends Component {
       <footer className="chatbar">
         <input className="chatbar-username"
           defaultValue={this.props.currentUser.name}
+          onBlur={this.handleChange}
         />
         <input
           className="chatbar-message"
@@ -26,5 +27,11 @@ class ChatBar extends Component {
       event.target.value = '';
     }
   }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.props.changeUser(event.target.value);
+  }
+
 }
 export default ChatBar;

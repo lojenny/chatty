@@ -12,19 +12,24 @@ class App extends Component {
     super(props);
     this.state = {
       allmessages: [],
-      users: userData
+      users: userData,
+      value: ''
     };
   }
 
-  getNewId() {
-    return this.nextId++;
+  // getNewId() {
+  //   return this.nextId++;
+  // }
+  changeUser = (content) => {
+    this.setState({
+      users: {name: content} 
+    })
   }
 
   sendMessage = (content) => {
     const newMessage = {
       username: this.state.users.name,
-      content,
-      id: this.getNewId()
+      content
     }
     // const all = this.state.allmessages
     // all.push(newMessage)
@@ -60,7 +65,11 @@ class App extends Component {
       <div>
         <NavBar />
         <MessageList messages={this.state.allmessages} />
-        <ChatBar currentUser={this.state.users} sendMessage={this.sendMessage} />
+        <ChatBar 
+        currentUser={this.state.users}
+        sendMessage={this.sendMessage}
+        changeUser={this.changeUser}
+        />
       </div>
     );
   }
