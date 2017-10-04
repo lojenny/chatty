@@ -11,31 +11,56 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allmessages: postsData,
+      allmessages: [],
       users: userData
     };
   }
 
-  sendMessage = (message) => {
-    console.log(`${message}`)
+  getNewId() {
+    return this.nextId++;
+  }
+
+  sendMessage = (content) => {
+    const newMessage = {
+      username: this.state.users.name,
+      content,
+      id: this.getNewId()
+    }
+    // const all = this.state.allmessages
+    // all.push(newMessage)
+    // this.setState({ allmessages: all});
+    this.socket.send(JSON.stringify(newMessage));
+
   }
 
   componentDidMount() {
-    console.log("componentDidMount <App />");
-    setTimeout(() => {
-      console.log("Simulating incoming message");
-      const newMessage = { id: 3, username: "Michelle", content: "Hello there!" };
-      const messages = this.state.allmessages.messages.concat(newMessage)
-      this.setState({ allmessages: {messages : messages} })
-    }, 3000);
+    this.socket = new WebSocket("ws://localhost:3001");
+    console.log("Connected to server");
+
+    const appContent = this;
+    
+    this.socket.onmessage = function (event) {
+      const newMessage = JSON.parse(event.data);
+      console.log(newMessage);
+      appContent.setState({
+        allmessages: [...appContent.state.allmessages, newMessage]
+      })
+    }
+    // setTimeout(() => {
+    //   console.log("Simulating incoming message");
+    //   const newMessage = { id: 4, username: "Michelle", content: "Hello there!" };
+    //   const messages = this.state.allmessages.concat(newMessage);
+    //   this.setState({ allmessages: messages} )
+    // }, 3000);
   }
+
 
   render() {
     return (
       <div>
         <NavBar />
-        <MessageList messages={this.state.allmessages.messages} />
-        <ChatBar currentUser={this.state.users.currentUser} sendMessage = {this.sendMessage}/>
+        <MessageList messages={this.state.allmessages} />
+        <ChatBar currentUser={this.state.users} sendMessage={this.sendMessage} />
       </div>
     );
   }
