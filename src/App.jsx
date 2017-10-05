@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-
 import postsData from './database.json';
 import userData from './user.json';
 
 const colorList= ['#9BC300', '#30088B', '#CBAE00', '#8D007C'];
+
 function randomizeUserColor(){
   const randomIndex = Math.floor(Math.random()*(colorList.length-1));
   return colorList[randomIndex];
@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       allmessages: [],
-      users: {name: "Bob", color: "black"},
+      users: {name: 'Anonymous', color: 'black'},
       value: '',
       numberConnected: 0
     };
@@ -34,7 +34,7 @@ class App extends Component {
     const newUserName = {
       type: 'postNotification',
       username: this.state.users.name,
-      content: `${userA} has changed to ${content}`
+      content: `Notification: ${userA} has changed to ${content}`
     }
     this.socket.send(JSON.stringify(newUserName));
   }

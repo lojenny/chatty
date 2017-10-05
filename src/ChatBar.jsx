@@ -14,6 +14,7 @@ class ChatBar extends Component {
           className="chatbar-message"
           placeholder={this.props.content}
           onKeyPress={this.handleKeyPress}
+          placeholder= "Type a message and hit Enter."          
         />
       </footer>
     );
@@ -30,7 +31,9 @@ class ChatBar extends Component {
 
   handleChange = (event) => {
     event.preventDefault();
+    if (event.target.value.length > 0){
     this.props.changeUser(event.target.value);
+    }
   }
 
 }

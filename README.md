@@ -1,45 +1,33 @@
-React Boilerplate
-=====================
+# Chatty Project
 
-A minimal and light dev environment for ReactJS.
+Chatty products allows users to chat with one another. Users can change their names. Message box will show notifications when users change names and when users connect and disconnect.
 
-### Usage
+### Getting Started
 
-Clone the boilerplate and create your own git repo.
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Start web server using `npm start`.
+4. Go to /chatty/chatty_server and run `npm install`.
+5. Install dependencies using `npm install`.
+6. Start websocket using `npm start`.
+7. Go to <http://localhost:3000/> in your browser to start chatting!
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
 
-Install the dependencies and start the server.
-
-```
-npm install
-npm start
-open http://localhost:3000
-```
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
 
 ### Dependencies
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+Express Server:
+* React: "15.4.2"
+* React-dom: "15.4.2"
+* UUID: "^3.1.0"
+
+
+WebSocket Server:
+* Express: "4.16.1"
+* UUID: "^3.1.0"
+* WS:"3.2.0"
+
+### Final Product
+
+![Conversation/ Change Name Notification](docs/example1.png)
+![Connection Notification/ Disconnect Notification](docs/example2.png)
