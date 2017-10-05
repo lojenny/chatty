@@ -29,5 +29,5 @@ WebSocket Server:
 
 ### Final Product
 
-![Conversation/ Change Name Notification](docs/example1.png)
-![Connection Notification/ Disconnect Notification](docs/example2.png)
+![Conversation/ Change Name Notification](https://github.com/lojenny/chatty/blob/master/docs/example1.png)
+![Connection Notification/ Disconnect Notification](https://github.com/lojenny/chatty/blob/master/docs/example2.png)
