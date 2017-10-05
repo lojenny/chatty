@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
-import postsData from './database.json';
-import userData from './user.json';
 
 const colorList= ['#9BC300', '#30088B', '#CBAE00', '#8D007C'];
 
