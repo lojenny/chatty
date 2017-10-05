@@ -27,6 +27,7 @@ class MessageList extends React.Component {
                 username={message.username}
                 key={message.id}
                 id={message.id}
+                color= {message.color}
               />
               break;
             default:

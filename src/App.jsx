@@ -6,13 +6,19 @@ import ChatBar from './ChatBar.jsx';
 import postsData from './database.json';
 import userData from './user.json';
 
+const colorList= ['#9BC300', '#30088B', '#CBAE00', '#8D007C'];
+function randomizeUserColor(){
+  const randomIndex = Math.floor(Math.random()*(colorList.length-1));
+  return colorList[randomIndex];
+}
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       allmessages: [],
-      users: userData,
+      users: {name: "Bob", color: "black"},
       value: '',
       numberConnected: 0
     };
@@ -22,8 +28,9 @@ class App extends Component {
   changeUser = (content) => {
     const userA = this.state.users.name;
     this.setState({
-      users: { name: content }
+      users: { name: content, color: randomizeUserColor()}
     });
+    console.log(this.state.users.color)
     const newUserName = {
       type: 'postNotification',
       username: this.state.users.name,
@@ -37,7 +44,8 @@ class App extends Component {
     const newMessage = {
       type: 'postMessage',
       username: this.state.users.name,
-      content
+      content,
+      color: this.state.users.color
     }
     this.socket.send(JSON.stringify(newMessage));
 
