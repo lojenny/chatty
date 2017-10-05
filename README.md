@@ -7,10 +7,9 @@ Chatty products allows users to chat with one another. Users can change their na
 1. Clone this repository.
 2. Install dependencies using `npm install`.
 3. Start web server using `npm start`.
-4. Go to /chatty/chatty_server and run `npm install`.
-5. Install dependencies using `npm install`.
-6. Start websocket using `npm start`.
-7. Go to <http://localhost:3000/> in your browser to start chatting!
+4. Go to /chatty/chatty_server and install dependencies using `npm install`.
+5. Start websocket using `npm start`.
+6. Go to <http://localhost:3000/> in your browser to start chatting!
 
 
 
