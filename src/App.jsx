@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       allmessages: [],
       users: userData,
-      value: ''
+      value: '',
+      numberConnected: 0
     };
   }
 
@@ -38,9 +39,6 @@ class App extends Component {
       username: this.state.users.name,
       content
     }
-    // const all = this.state.allmessages
-    // all.push(newMessage)
-    // this.setState({ allmessages: all});
     this.socket.send(JSON.stringify(newMessage));
 
   }
@@ -49,8 +47,9 @@ class App extends Component {
     this.socket = new WebSocket("ws://localhost:3001");
     console.log("Connected to server");
 
-    const appContent = this;
+    const username = this.state.users.name;
 
+    const appContent = this;
     this.socket.onmessage = function (event) {
       const newMessage = JSON.parse(event.data);
       switch (newMessage.type) {
@@ -63,6 +62,13 @@ class App extends Component {
           appContent.setState({
             allmessages: [...appContent.state.allmessages, newMessage]
           })
+          break;
+          case ('incomingNewConnection'):
+          appContent.setState({
+            allmessages: [...appContent.state.allmessages, newMessage],
+            numberConnected: newMessage.numberConnection
+          })
+          console.log(appContent.state.numberConnected)
           break;
         default:
           throw new Error('unknown event type' + newMessage.type)
@@ -87,7 +93,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar 
+          numberConnected={this.state.numberConnected}
+        />
         <MessageList
           messages={this.state.allmessages}
         />

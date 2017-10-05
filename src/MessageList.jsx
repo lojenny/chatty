@@ -11,8 +11,14 @@ class MessageList extends React.Component {
           switch (message.type) {
             case ('incomingNotification'):
               return <Notification
-              content = {message.content}
-              key={message.id}
+                content={message.content}
+                key={message.id}
+              />
+              break;
+            case ('incomingNewConnection'):
+              return <Notification
+                content={message.content}
+                key={message.id}
               />
               break;
             case ('incomingMessage'):
